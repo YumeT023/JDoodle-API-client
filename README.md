@@ -41,6 +41,10 @@ import { JDoodleError } from "./types";
 const execution = client.execute('IO.puts "Hello jdoodle client"', {
   language: "elixir",
   versionIndex: 4,
+  /*
+  stdin: "your STDIN",
+  compileOnly: false 
+   */
 });
 
 execution

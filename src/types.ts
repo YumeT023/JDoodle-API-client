@@ -22,6 +22,7 @@ export type Language = {
  */
 export type CodeExecutionOptions = Language & {
   compileOnly?: boolean;
+  stdin?: string;
 };
 
 export type CodeExecutionPayload = CodeExecutionOptions & {
