@@ -4,7 +4,7 @@
   "author": "yumii.saiko <yumii.saiko@gmail.com>",
   "homepage": "https://github.com/YumeT023/jdoodle-client#readme",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["compiler", "jdoodle"],
   "bugs": {
     "url": "https://github.com/YumeT023/jdoodle-client/issues",
     "email": "yumii.saiko@gmail.com"
