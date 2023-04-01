@@ -2,7 +2,7 @@ import { req } from './conf';
 import { CodeExectionResult, CodeExecutionOptions, Credentials, CreditSpent, JDoodleClient } from "./types";
 
 export class JDoodle implements JDoodleClient {
-  private credentials: Credentials;
+  private readonly credentials: Credentials;
 
   private constructor(credentials: Credentials) {
     this.credentials = credentials;
