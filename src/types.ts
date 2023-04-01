@@ -14,7 +14,7 @@ export type Credentials = {
  */
 export type Language = {
   language: string;
-  versionIndex?: string;
+  versionIndex?: number;
 };
 
 /**
