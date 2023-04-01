@@ -1,17 +1,21 @@
+import { req } from "./conf";
 import {
-  CodeExecutionResult,
   CodeExecutionOptions,
+  CodeExecutionResult,
   Credentials,
   CreditSpent,
   JDoodleClient,
 } from "./types";
-import { req } from "./conf";
 
 class JDoodle implements JDoodleClient {
   private readonly credentials: Credentials;
 
   constructor(credentials: Credentials) {
     this.credentials = credentials;
+  }
+
+  private static _throwError(e: any) {
+    throw e.response.data || e;
   }
 
   public async execute(
@@ -24,14 +28,20 @@ class JDoodle implements JDoodleClient {
       ...options,
     };
 
-    const execution = req.post("/execute", payload);
-
-    return (await execution).data;
+    try {
+      const execution = (await req.post("/execute", payload)).data;
+      return { ...execution, output: execution.output.trim() };
+    } catch (e) {
+      JDoodle._throwError(e);
+    }
   }
 
   public async checkCreditSpent(): Promise<CreditSpent> {
-    const check = req.post("/credit-spent", this.credentials);
-    return (await check).data;
+    try {
+      return (await req.post("/credit-spent", this.credentials)).data;
+    } catch (e) {
+      JDoodle._throwError(e);
+    }
   }
 }
 

@@ -20,14 +20,15 @@ export type Language = {
 /**
  * metadata for the code to be executed
  */
-export type CodeExecutionOptions = Language & {};
+export type CodeExecutionOptions = Language & {
+  compileOnly?: boolean;
+};
 
 export type CodeExecutionPayload = CodeExecutionOptions & {
   /**
    * the script/code to execute
    */
   script: string;
-  compileOnly?: boolean;
 };
 
 export type CodeExecutionResult = {
@@ -56,6 +57,15 @@ export type CreditSpent = {
    */
   used: number;
 };
+
+
+/**
+ * error model that is used whenever any error occurs
+ */
+export type JDoodleError = {
+  error: string;
+  statusCode: number;
+}
 
 /**
  * @interface _JDoodle
