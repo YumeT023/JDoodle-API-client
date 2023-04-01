@@ -10,15 +10,14 @@ export type Credentials = {
  * @see [language and version supported in API](https://docs.jdoodle.com/integrating-compiler-ide-to-your-application/languages-and-versions-supported-in-api-and-plugins)
  */
 export type Language = {
-  code: string;
+  language: string;
   versionIndex: string;
 }
 
 /**
  * metadata for the code to be executed
  */
-export type CodeExecutionOptions = {
-  language: Language;
+export type CodeExecutionOptions = Language & {
 }
 
 export type CodeExecutionPayload = CodeExecutionOptions & {
@@ -61,7 +60,7 @@ export type CreditSpent = {
  * an interface that should be implemented by the client
  * which regroup all possible operations
  */
-export interface _JDoodle {
+export interface JDoodleClient {
   /**
    * execute the script with the given options
    */
