@@ -1,3 +1,6 @@
+/**
+ * credentials given to you after subscribing to [JDoodle Compiler API](https://docs.jdoodle.com/integrating-compiler-ide-to-your-application/compiler-api)
+ */
 export type Credentials = {
   clientId: string;
   clientSecret: string;
@@ -11,7 +14,7 @@ export type Credentials = {
  */
 export type Language = {
   language: string;
-  versionIndex: string;
+  versionIndex?: string;
 };
 
 /**
@@ -24,9 +27,10 @@ export type CodeExecutionPayload = CodeExecutionOptions & {
    * the script/code to execute
    */
   script: string;
+  compileOnly?: boolean;
 };
 
-export type CodeExectionResult = {
+export type CodeExecutionResult = {
   /**
    * Output of the program
    */
@@ -66,7 +70,7 @@ export interface JDoodleClient {
   execute(
     script: string,
     options: CodeExecutionOptions
-  ): Promise<CodeExectionResult>;
+  ): Promise<CodeExecutionResult>;
 
   /**
    * check No. of credits used today

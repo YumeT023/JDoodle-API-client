@@ -1,5 +1,5 @@
 import {
-  CodeExectionResult,
+  CodeExecutionResult,
   CodeExecutionOptions,
   Credentials,
   CreditSpent,
@@ -7,21 +7,17 @@ import {
 } from "./types";
 import { req } from "./conf";
 
-export class JDoodle implements JDoodleClient {
+class JDoodle implements JDoodleClient {
   private readonly credentials: Credentials;
 
-  private constructor(credentials: Credentials) {
+  constructor(credentials: Credentials) {
     this.credentials = credentials;
-  }
-
-  static createClient(credentials: Credentials) {
-    return new this(credentials);
   }
 
   public async execute(
     script: string,
     options: CodeExecutionOptions
-  ): Promise<CodeExectionResult> {
+  ): Promise<CodeExecutionResult> {
     const payload = {
       script,
       ...this.credentials,
@@ -38,3 +34,5 @@ export class JDoodle implements JDoodleClient {
     return (await check).data;
   }
 }
+
+export const CLIENT = (credentials: Credentials) => new JDoodle(credentials);
