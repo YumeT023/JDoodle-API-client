@@ -4,7 +4,7 @@
 npm run test
 
 # rebuild
-rm -rf diist
+rm -rf dist
 npm run build
 
 # do not generate .js file for type declaration
