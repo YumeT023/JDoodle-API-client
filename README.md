@@ -1,6 +1,6 @@
 # jdoodle-client
 
-a client for the _JDoodle Compiler API_
+an unofficial _TYPE_SAFE_ node.js client for the _JDoodle Compiler API_
 
 ## Usage
 
@@ -56,3 +56,29 @@ execution
     // handle error
   });
 ```
+
+## Run locally
+
+### Clone this repository
+
+```shell
+git clone https://github.com/YumeT023/jdoodle-client
+```
+
+### Install the dependencies
+
+```shell
+npm install
+```
+
+### Build
+
+```shell
+sh ./build.sh
+```
+
+This command will:
+- run the test (but passes with no test)
+- remove the previous build folder `dist`
+- build the project in `dist` folder
+- remove *.js files in `@types/types` folder and also `types.js/type.js` files (we don't want to gen *.js files for ts types declaration)
