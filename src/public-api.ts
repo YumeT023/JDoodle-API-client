@@ -39,7 +39,7 @@ class JDoodle implements JDoodleClient {
         localVarResponse = { compilationStatus };
       }
 
-      return { ...rest, ...localVarResponse };
+      return { output: output.trim(), ...rest, ...localVarResponse };
     } catch (e) {
       JDoodle._throwError(e);
     }
