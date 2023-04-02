@@ -6,7 +6,9 @@
   "license": "MIT",
   "keywords": [
     "compiler",
-    "jdoodle"
+    "jdoodle",
+    "api",
+    "api-client"
   ],
   "bugs": {
     "url": "https://github.com/YumeT023/jdoodle-client/issues",
