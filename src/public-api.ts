@@ -1,5 +1,11 @@
-import {req} from "./conf";
-import {CodeExecutionOptions, CodeExecutionResult, Credentials, CreditSpent, JDoodleClient,} from "./types";
+import { req } from "./conf";
+import {
+  CodeExecutionOptions,
+  CodeExecutionResult,
+  Credentials,
+  CreditSpent,
+  JDoodleClient,
+} from "./types";
 
 class JDoodle implements JDoodleClient {
   private readonly credentials: Credentials;
@@ -25,15 +31,15 @@ class JDoodle implements JDoodleClient {
     let localVarResponse = {} as any;
 
     try {
-      const {compilationStatus, output, ...rest} = (
+      const { compilationStatus, output, ...rest } = (
         await req.post("/execute", payload)
       ).data as CodeExecutionResult;
 
       if (options.compileOnly) {
-        localVarResponse = {compilationStatus};
+        localVarResponse = { compilationStatus };
       }
 
-      return {...rest, ...localVarResponse};
+      return { ...rest, ...localVarResponse };
     } catch (e) {
       JDoodle._throwError(e);
     }

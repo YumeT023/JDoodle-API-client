@@ -59,14 +59,13 @@ export type CreditSpent = {
   used: number;
 };
 
-
 /**
  * error model that is used whenever any error occurs
  */
 export type JDoodleError = {
   error: string;
   statusCode: number;
-}
+};
 
 /**
  * @interface _JDoodle
