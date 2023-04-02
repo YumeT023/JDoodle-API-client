@@ -1,30 +1,44 @@
-import { CLIENT } from "../dist";
-import { CodeExecutionResult, CreditSpent, JDoodleError } from "../dist/types";
+import { CLIENT } from '../src';
+import { JDoodleError, CodeExecutionResult, CreditSpent } from '../src/types';
 
-const client = CLIENT({
-  clientId: "YOUR_CLIENT_ID",
-  clientSecret: "YOUR_CLIENT_SECRET",
+var client = CLIENT({
+    clientId: "YOUR_CLIENT_ID",
+    clientSecret: "YOUR_CLIENT_SECRET"
 });
 
-client
-  .execute('IO.puts "Hello world"', {
-    language: "elixir",
-    versionIndex: 4,
-    compileOnly: true,
-  })
-  .then(doSomething_withResult)
-  .catch(handleError);
+const script = `
+    defmodule JDoodleModule do
+        def hello, do: "world"
+    end
 
-client.checkCreditSpent().then(doSomething_withCreditSpent).catch(handleError);
+    IO.inspect JDoodleModule.hello() # should output "world"
+`
+const options = {
+    language: "elixir",
+    versionIndex: 3,
+}
+
+client
+    .execute(script, options)
+    .then(handleExecution)
+    .catch(handleError);
+
+client
+    .checkCreditSpent()
+    .then(handleCreditSpent)
+    .catch(handleError);
 
 function handleError(e: JDoodleError) {
-  /* do something with error */
+    /* do something with error */
+    console.log(e);
 }
 
-function doSomething_withResult(result: CodeExecutionResult) {
-  /* do something with result */
+function handleExecution(result: CodeExecutionResult) {
+    /* do something with result */
+    console.log(result);
 }
 
-function doSomething_withCreditSpent(credit: CreditSpent) {
-  /* do something with credit */
+function handleCreditSpent(credit: CreditSpent) {
+    /* do something with credit */
+    console.log(credit);
 }
