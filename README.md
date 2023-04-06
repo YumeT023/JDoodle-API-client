@@ -9,8 +9,8 @@ Please refer to [JDoodle docs](https://docs.jdoodle.com/integrating-compiler-ide
 #### Create a client
 
 ```typescript
-import { CLIENT } from "../src";
-import { JDoodleError } from "../src/types";
+import { CLIENT } from "@yumii.saiko/jdoodle-client";
+import { JDoodleError } from "@yumii.saiko/jdoodle-client/types";
 
 // provided your credentials
 const client = CLIENT({
