@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "CommonJS",
+    "target": "es6",
+    "module": "commonjs",
     "outDir": "dist",
-    "lib": ["ES2021", "DOM"],
+    "lib": ["ES2020", "DOM"],
     "declaration": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "skipLibCheck": true
   },
   "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules", "./**/*.test.ts"]
+  "exclude": ["node_modules", "dist"]
 }

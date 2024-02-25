@@ -1,7 +1,7 @@
 /**
  * credentials given to you after subscribing to [JDoodle Compiler API](https://docs.jdoodle.com/integrating-compiler-ide-to-your-application/compiler-api)
  */
-export type Credentials = {
+export type ApiToken = {
   clientId: string;
   clientSecret: string;
 };
@@ -20,19 +20,19 @@ export type Language = {
 /**
  * metadata for the code to be executed
  */
-export type CodeExecutionOptions = Language & {
+export type CodeExecutionFlags = Language & {
   compileOnly?: boolean;
   stdin?: string;
 };
 
-export type CodeExecutionPayload = CodeExecutionOptions & {
+export type CodeExecutionInput = CodeExecutionFlags & {
   /**
    * the script/code to execute
    */
   script: string;
 };
 
-export type CodeExecutionResult = {
+export type CodeExecutionOutput = {
   /**
    * Output of the program
    */
@@ -67,23 +67,3 @@ export type JDoodleError = {
   statusCode: number;
 };
 
-/**
- * @interface _JDoodle
- *
- * an interface that should be implemented by the client
- * which regroup all possible operations
- */
-export interface JDoodleClient {
-  /**
-   * execute the script with the given options
-   */
-  execute(
-    script: string,
-    options: CodeExecutionOptions
-  ): Promise<CodeExecutionResult>;
-
-  /**
-   * check No. of credits used today
-   */
-  checkCreditSpent(): Promise<CreditSpent>;
-}

@@ -1,31 +1,30 @@
-import { CLIENT } from '../src';
-import { JDoodleError, CodeExecutionResult, CreditSpent } from '../src/types';
+import { initializeJDoodleApp } from '../src';
+import { JDoodleError, CodeExecutionOutput, CreditSpent } from '../src/types';
 
-var client = CLIENT({
-    clientId: "YOUR_CLIENT_ID",
-    clientSecret: "YOUR_CLIENT_SECRET"
+const client = initializeJDoodleApp({
+    clientId: "CLIENT_ID",
+    clientSecret: "CLIENT_SECRET",
 });
 
 const script = `
-    defmodule JDoodleModule do
-        def hello, do: "world"
-    end
-
-    IO.inspect JDoodleModule.hello() # should output "world"
+fn main() {
+  println!("Hello world");
+}
 `
+
 const options = {
-    language: "elixir",
+    language: "rust",
     versionIndex: 3,
 }
 
 client
     .execute(script, options)
-    .then(handleExecution)
+    .then(onExecuted)
     .catch(handleError);
 
 client
     .checkCreditSpent()
-    .then(handleCreditSpent)
+    .then(onCreditSpent)
     .catch(handleError);
 
 function handleError(e: JDoodleError) {
@@ -33,12 +32,12 @@ function handleError(e: JDoodleError) {
     console.log(e);
 }
 
-function handleExecution(result: CodeExecutionResult) {
+function onExecuted(result: CodeExecutionOutput) {
     /* do something with result */
     console.log(result);
 }
 
-function handleCreditSpent(credit: CreditSpent) {
+function onCreditSpent(credit: CreditSpent) {
     /* do something with credit */
     console.log(credit);
 }

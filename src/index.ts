@@ -3,4 +3,5 @@
  *
  * this files exports the _Public API_
  */
-export * from "./public-api";
+export * from "./impl";
+export * from "./types";
