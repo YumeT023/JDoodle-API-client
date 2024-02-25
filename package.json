@@ -20,6 +20,11 @@
     "access": "public"
   },
   "description": "a client for the _JDoodle Compiler API_",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "jest --passWithNoTests"
