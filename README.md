@@ -1,19 +1,21 @@
 # jdoodle-client
 
-an unofficial _TYPE_SAFE_ node.js client for the _JDoodle Compiler API_
+an unofficial typesafe javascript client for the [jdoodle](https://www.jdoodle.com) compiler API
 
 ## Usage
 
-Please refer to [JDoodle docs](https://docs.jdoodle.com/integrating-compiler-ide-to-your-application/compiler-api) for more details
+Please refer to [JDoodle docs](https://www.jdoodle.com/docs) for more details
 
 #### Create a client
 
 ```typescript
-import { CLIENT } from "@yumii.saiko/jdoodle-client";
-import { JDoodleError } from "@yumii.saiko/jdoodle-client/types";
+import {
+  initializeJDoodleApp,
+  JDoodleError,
+} from "@yumii.saiko/jdoodle-client";
 
 // provided your credentials
-const client = CLIENT({
+const client = initializeJDoodleApp({
   clientId: "EXAMPLE_CLIENT_ID",
   clientSecret: "EXAMPLE_CLIENT_SECRET",
 });
@@ -34,6 +36,8 @@ checkReq
 ```
 
 #### Execute a script
+
+Refer to [Jdoodle compiler API](https://www.jdoodle.com/docs) for more info about the supported languages
 
 ```typescript
 import { JDoodleError } from "./types";
@@ -62,7 +66,7 @@ execution
 ### Clone this repository
 
 ```shell
-git clone https://github.com/YumeT023/jdoodle-client
+git clone https://github.com/YumeT023/JDoodle-API-client
 ```
 
 ### Install the dependencies
@@ -74,12 +78,5 @@ npm install
 ### Build
 
 ```shell
-sh ./build.sh
+npm build
 ```
-
-This command will:
-
-- run the test (but passes with no test)
-- remove the previous build folder `dist`
-- build the project in `dist` folder
-- remove _.js files in `@types/types` folder and also `types.js/type.js` files (we don't want to gen _.js files for ts types declaration)
