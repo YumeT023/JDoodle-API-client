@@ -66,4 +66,3 @@ export type JDoodleError = {
   error: string;
   statusCode: number;
 };
-

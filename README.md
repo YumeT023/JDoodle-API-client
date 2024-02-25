@@ -78,7 +78,8 @@ sh ./build.sh
 ```
 
 This command will:
+
 - run the test (but passes with no test)
 - remove the previous build folder `dist`
 - build the project in `dist` folder
-- remove *.js files in `@types/types` folder and also `types.js/type.js` files (we don't want to gen *.js files for ts types declaration)
+- remove _.js files in `@types/types` folder and also `types.js/type.js` files (we don't want to gen _.js files for ts types declaration)

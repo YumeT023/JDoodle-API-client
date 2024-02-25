@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 class JDoodle {
-  constructor(private readonly credentials: ApiToken) {  }
+  constructor(private readonly credentials: ApiToken) {}
 
   private async callHandle<T>(cb: () => Promise<T>) {
     try {
@@ -19,7 +19,7 @@ class JDoodle {
 
   public execute(
     script: string,
-    options: CodeExecutionFlags,
+    options: CodeExecutionFlags
   ): Promise<CodeExecutionOutput> {
     const payload = {
       script,
@@ -28,9 +28,7 @@ class JDoodle {
     };
 
     return this.callHandle(async () => {
-      const { output, ...rest } = (
-        await req.post("/execute", payload)
-      ).data;
+      const { output, ...rest } = (await req.post("/execute", payload)).data;
       return { output: output.trim(), ...rest };
     });
   }
@@ -42,4 +40,5 @@ class JDoodle {
   }
 }
 
-export const initializeJDoodleApp = (credentials: ApiToken) => new JDoodle(credentials);
+export const initializeJDoodleApp = (credentials: ApiToken) =>
+  new JDoodle(credentials);
